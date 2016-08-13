@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using PeopleSearch.Domain;
+using PeopleSearch.Domain.Entities;
 
 namespace PeopleSearch.Server.Server
 {
@@ -12,7 +13,7 @@ namespace PeopleSearch.Server.Server
     {
         public HttpResponseMessage GetPerson(int personId)
         {
-            Person person = Person.CreatePerson("Darth", "Vader");
+            Person person = Person.CreatePerson("Darth", "Vader", new DateTime(2015, 5, 4));
 
             try
             {

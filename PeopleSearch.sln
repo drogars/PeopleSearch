@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearch.Server", "3_In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearch.Domain", "1_Domain\PeopleSearch.Domain\PeopleSearch.Domain.csproj", "{5F6DB07B-C713-4DB9-88C5-48BA5CC90523}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B9915CF6-ADC0-4E23-9F7A-387EFEE3A5F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearch.UnitTests", "3_InputOutput\Tests\PeopleSearch.UnitTests\PeopleSearch.UnitTests.csproj", "{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,10 @@ Global
 		{5F6DB07B-C713-4DB9-88C5-48BA5CC90523}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F6DB07B-C713-4DB9-88C5-48BA5CC90523}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F6DB07B-C713-4DB9-88C5-48BA5CC90523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -34,5 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E5B69CAA-924E-43C7-8087-E14451D98B71} = {531E0C61-1D8D-49E0-BEC9-4E4613D54A9F}
 		{5F6DB07B-C713-4DB9-88C5-48BA5CC90523} = {7C9EF919-4789-4BCD-BD10-839DF847AE6B}
+		{B9915CF6-ADC0-4E23-9F7A-387EFEE3A5F6} = {531E0C61-1D8D-49E0-BEC9-4E4613D54A9F}
+		{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97} = {B9915CF6-ADC0-4E23-9F7A-387EFEE3A5F6}
 	EndGlobalSection
 EndGlobal
