@@ -89,6 +89,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\People.mdf" />
+    <Content Include="App_Data\People_log.ldf">
+      <DependentUpon>People.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -104,13 +108,15 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\1_Domain\PeopleSearch.Domain\PeopleSearch.Domain.csproj">
       <Project>{5f6db07b-c713-4db9-88c5-48ba5cc90523}</Project>
       <Name>PeopleSearch.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\2_ApplicationServices\PeopleSearch.Infrastructure\PeopleSearch.Infrastructure.csproj">
+      <Project>{E520D2FD-DEE5-4248-A6FF-95F58C3328A7}</Project>
+      <Name>PeopleSearch.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

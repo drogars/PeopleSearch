@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B9915CF6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearch.UnitTests", "3_InputOutput\Tests\PeopleSearch.UnitTests\PeopleSearch.UnitTests.csproj", "{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearch.Infrastructure", "2_ApplicationServices\PeopleSearch.Infrastructure\PeopleSearch.Infrastructure.csproj", "{E520D2FD-DEE5-4248-A6FF-95F58C3328A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E520D2FD-DEE5-4248-A6FF-95F58C3328A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E520D2FD-DEE5-4248-A6FF-95F58C3328A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E520D2FD-DEE5-4248-A6FF-95F58C3328A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E520D2FD-DEE5-4248-A6FF-95F58C3328A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,5 +50,6 @@ Global
 		{5F6DB07B-C713-4DB9-88C5-48BA5CC90523} = {7C9EF919-4789-4BCD-BD10-839DF847AE6B}
 		{B9915CF6-ADC0-4E23-9F7A-387EFEE3A5F6} = {531E0C61-1D8D-49E0-BEC9-4E4613D54A9F}
 		{0D09ED4B-6925-4805-89FD-BC2E1EB8CB97} = {B9915CF6-ADC0-4E23-9F7A-387EFEE3A5F6}
+		{E520D2FD-DEE5-4248-A6FF-95F58C3328A7} = {62DD0454-4D6D-425B-A6DD-E1D549E21261}
 	EndGlobalSection
 EndGlobal

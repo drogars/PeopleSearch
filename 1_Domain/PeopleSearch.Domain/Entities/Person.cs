@@ -4,6 +4,7 @@ namespace PeopleSearch.Domain.Entities
 {
     public class Person
     {
+        public int PersonId { get; protected set; }
         public string FirstName { get; protected set; }
         public string LastName { get; protected set; }
         public DateTime DateOfBirth { get; protected set; }
