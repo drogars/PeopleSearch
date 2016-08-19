@@ -22,7 +22,7 @@ namespace PeopleSearch.UnitTests.Entities
             var dateOfBirth = new DateTime(2010, 5, 4);
 
             // Act // Assert
-            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth));
+            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth, null, null, null, null, null, null));
 
 
             // Arrange
@@ -31,7 +31,7 @@ namespace PeopleSearch.UnitTests.Entities
             dateOfBirth = new DateTime(2010, 5, 4);
 
             // Act // Assert
-            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth));
+            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth, null, null, null, null, null, null));
 
 
             // Arrange
@@ -40,7 +40,7 @@ namespace PeopleSearch.UnitTests.Entities
             dateOfBirth = new DateTime(2010, 5, 4, 4, 4, 4);
 
             // Act // Assert
-            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth));
+            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth, null, null, null, null, null, null));
         }
 
         [Test]
@@ -50,14 +50,47 @@ namespace PeopleSearch.UnitTests.Entities
             var firstName = "Darth";
             var lastName = "Vader";
             var dateOfBirth = new DateTime(2010, 5, 4);
+            var addr1 = "400 E 200 S";
+            var addr2 = "";
+            var city = "Salt Lake City";
+            var state = "UT";
+            var postalCode = "84101";
+            var interestValues = new List<string> {"c#", "TypeScript", "npm", "cycling"};
+            var interests = interestValues.Select(i => Interest.Create(i)).ToList();
 
             // Act
-            var person = Person.CreatePerson(firstName, lastName, dateOfBirth);
+            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interestValues, addr1, addr2, city, state, postalCode);
 
             // Assert
             person.FirstName.Should().Be(firstName);
             person.LastName.Should().Be(lastName);
             person.DateOfBirth.Should().Be(dateOfBirth);
+            person.Address1.Should().Be(addr1);
+            person.Address2.Should().Be(addr2);
+            person.City.Should().Be(city);
+            person.State.Should().Be(state);
+            person.PostalCode.Should().Be(postalCode);
+            foreach (var interest in person.Interests)
+            {
+                interests.Should().Contain(i => i.Value == interest.Value);
+            }
+        }
+
+        [Test]
+        public void Create_ShouldSetInterestsToEmptyList_WhenPassedANullObject()
+        {
+            // Arrange
+            var firstName = "Darth";
+            var lastName = "Vader";
+            var dateOfBirth = new DateTime(2010, 5, 4);
+            List<string> interests = null;
+
+            // Act
+            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interests, null, null, null, null, null);
+
+            // Assert
+            person.Interests.Should().NotBeNull();
+            person.Interests.Count.Should().Be(0);
         }
     }
 }

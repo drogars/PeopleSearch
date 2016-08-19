@@ -20,9 +20,10 @@ namespace PeopleSearch.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
 
-            // TODO: need to setup the join
+            modelBuilder.Entity<Person>().HasMany(p => p.Interests).WithMany().Map(x => x.ToTable("PersonInterestJoin"));
         }
 
         public DbSet<Person> People { get; set; }
+        public DbSet<Interest> Interests { get; set; }
     }
 }

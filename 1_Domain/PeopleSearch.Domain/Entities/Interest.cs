@@ -8,6 +8,7 @@ namespace PeopleSearch.Domain.Entities
 {
     public class Interest
     {
+        public int InterestId { get; protected set; }
         public string Value { get; protected set; }
 
         protected Interest()

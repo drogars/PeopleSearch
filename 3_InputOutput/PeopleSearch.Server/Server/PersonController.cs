@@ -14,7 +14,7 @@ namespace PeopleSearch.Server.Server
     {
         public HttpResponseMessage GetPerson(int personId)
         {
-            Person person = Person.CreatePerson("Darth", "Vader", new DateTime(2015, 5, 4));
+            var person = Person.CreatePerson("Darth", "Vader", new DateTime(2015, 5, 4), new List<string> {"Sith", "Luke Skywalker" }, null, null, null, null, null);
 
             try
             {
@@ -37,7 +37,7 @@ namespace PeopleSearch.Server.Server
         {
             var peopleContext = new PeopleContext();
 
-            var person = Person.CreatePerson("Darth", "Vader", DateTime.Today);
+            var person = Person.CreatePerson("Darth", "Vader", new DateTime(2015, 5, 4), new List<string> { "Sith", "Luke Skywalker" }, null, null, null, null, null);
 
             peopleContext.People.Add(person);
             peopleContext.SaveChanges();
