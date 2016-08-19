@@ -44,6 +44,23 @@ namespace PeopleSearch.UnitTests.Entities
         }
 
         [Test]
+        public void Create_ShouldSetInterestsToEmptyList_WhenPassedANullObject()
+        {
+            // Arrange
+            var firstName = "Darth";
+            var lastName = "Vader";
+            var dateOfBirth = new DateTime(2010, 5, 4);
+            List<string> interests = null;
+
+            // Act
+            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interests, null, null, null, null, null);
+
+            // Assert
+            person.Interests.Should().NotBeNull();
+            person.Interests.Count.Should().Be(0);
+        }
+
+        [Test]
         public void Create_ShouldSetProperties_WhenPassedValidValues()
         {
             // Arrange
@@ -76,21 +93,6 @@ namespace PeopleSearch.UnitTests.Entities
             }
         }
 
-        [Test]
-        public void Create_ShouldSetInterestsToEmptyList_WhenPassedANullObject()
-        {
-            // Arrange
-            var firstName = "Darth";
-            var lastName = "Vader";
-            var dateOfBirth = new DateTime(2010, 5, 4);
-            List<string> interests = null;
-
-            // Act
-            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interests, null, null, null, null, null);
-
-            // Assert
-            person.Interests.Should().NotBeNull();
-            person.Interests.Count.Should().Be(0);
-        }
+        
     }
 }

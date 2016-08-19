@@ -12,13 +12,20 @@ namespace PeopleSearch.Server.Server
 {
     public class PersonController : ApiController
     {
+        private readonly PeopleContext _peopleContext;
+
+        public PersonController(PeopleContext peopleContext)
+        {
+            _peopleContext = peopleContext;
+        }
+
         public HttpResponseMessage GetPerson(int personId)
         {
-            var person = Person.CreatePerson("Darth", "Vader", new DateTime(2015, 5, 4), new List<string> {"Sith", "Luke Skywalker" }, null, null, null, null, null);
+            Person person = null;
 
             try
             {
-
+                person = _peopleContext.People.Find(personId);
             }
             catch (Exception ex)
             {
@@ -35,12 +42,10 @@ namespace PeopleSearch.Server.Server
         [HttpGet]
         public HttpResponseMessage SeedPeople()
         {
-            var peopleContext = new PeopleContext();
-
             var person = Person.CreatePerson("Darth", "Vader", new DateTime(2015, 5, 4), new List<string> { "Sith", "Luke Skywalker" }, null, null, null, null, null);
 
-            peopleContext.People.Add(person);
-            peopleContext.SaveChanges();
+            _peopleContext.People.Add(person);
+            _peopleContext.SaveChanges();
 
             var result = new SeedPeopleResult();
 
