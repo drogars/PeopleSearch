@@ -22,7 +22,7 @@ namespace PeopleSearch.UnitTests.Entities
             var dateOfBirth = new DateTime(2010, 5, 4);
 
             // Act // Assert
-            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth, null, null, null, null, null, null));
+            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth, null, null, null, null, null, null, null));
 
 
             // Arrange
@@ -31,7 +31,7 @@ namespace PeopleSearch.UnitTests.Entities
             dateOfBirth = new DateTime(2010, 5, 4);
 
             // Act // Assert
-            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth, null, null, null, null, null, null));
+            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth, null, null, null, null, null, null, null));
 
 
             // Arrange
@@ -40,7 +40,7 @@ namespace PeopleSearch.UnitTests.Entities
             dateOfBirth = new DateTime(2010, 5, 4, 4, 4, 4);
 
             // Act // Assert
-            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth, null, null, null, null, null, null));
+            Assert.Throws<ArgumentException>(() => Person.CreatePerson(firstName, lastName, dateOfBirth, null, null, null, null, null, null, null));
         }
 
         [Test]
@@ -53,11 +53,29 @@ namespace PeopleSearch.UnitTests.Entities
             List<string> interests = null;
 
             // Act
-            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interests, null, null, null, null, null);
+            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interests, null, null, null, null, null, null);
 
             // Assert
             person.Interests.Should().NotBeNull();
             person.Interests.Count.Should().Be(0);
+        }
+
+        [Test]
+        public void Create_ShouldSetPictureToEmptyArray_WhenPassedANullObject()
+        {
+            // Arrange
+            var firstName = "Darth";
+            var lastName = "Vader";
+            var dateOfBirth = new DateTime(2010, 5, 4);
+            var interests = new List<string>();
+            byte[] picture = null;
+
+            // Act
+            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interests, picture, null, null, null, null, null);
+
+            // Assert
+            person.Picture.Should().NotBeNull();
+            person.Picture.Length.Should().Be(0);
         }
 
         [Test]
@@ -74,9 +92,10 @@ namespace PeopleSearch.UnitTests.Entities
             var postalCode = "84101";
             var interestValues = new List<string> {"c#", "TypeScript", "npm", "cycling"};
             var interests = interestValues.Select(i => Interest.Create(i)).ToList();
+            var picture = new byte[] {31, 2, 7};
 
             // Act
-            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interestValues, addr1, addr2, city, state, postalCode);
+            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interestValues, picture, addr1, addr2, city, state, postalCode);
 
             // Assert
             person.FirstName.Should().Be(firstName);
@@ -91,6 +110,7 @@ namespace PeopleSearch.UnitTests.Entities
             {
                 interests.Should().Contain(i => i.Value == interest.Value);
             }
+            person.Picture.Should().BeSameAs(picture);
         }
 
         

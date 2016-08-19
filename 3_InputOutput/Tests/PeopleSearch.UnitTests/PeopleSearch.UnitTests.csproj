@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\PersonQueriesApiControllerTests.cs" />
     <Compile Include="Entities\InterestTests.cs" />
     <Compile Include="Entities\PersonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

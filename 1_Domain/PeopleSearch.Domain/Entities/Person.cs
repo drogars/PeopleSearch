@@ -16,6 +16,7 @@ namespace PeopleSearch.Domain.Entities
         public string State { get; protected set; }
         public string PostalCode { get; protected set; }
         public List<Interest> Interests { get; protected set; }
+        public byte[] Picture { get; protected set; }
 
 
         protected Person()
@@ -23,7 +24,7 @@ namespace PeopleSearch.Domain.Entities
             
         }
 
-        public static Person CreatePerson(string firstName, string lastName, DateTime dateOfBirth, List<string> interests,
+        public static Person CreatePerson(string firstName, string lastName, DateTime dateOfBirth, List<string> interests, byte[] picture,
             string addr1, string addr2, string city, string state, string postalCode)
         {
             //TODO: add picture
@@ -33,6 +34,10 @@ namespace PeopleSearch.Domain.Entities
             if (interests == null)
             {
                 interests = new List<string>();
+            }
+            if (picture == null)
+            {
+                picture = new byte[0];
             }
 
             var person = new Person();
@@ -46,6 +51,7 @@ namespace PeopleSearch.Domain.Entities
             person.State = state;
             person.PostalCode = postalCode;
             person.Interests = interests.Select(i => Interest.Create(i)).ToList();
+            person.Picture = picture;
 
             return person;
         }
