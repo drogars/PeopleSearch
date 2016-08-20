@@ -115,6 +115,8 @@
     <Compile Include="Server\ErrorController.cs" />
     <Compile Include="Server\PersonCommandsApiController.cs" />
     <Compile Include="Server\PersonQueriesApiController.cs" />
+    <Compile Include="Services\InterestRepository.cs" />
+    <Compile Include="Services\PersonRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

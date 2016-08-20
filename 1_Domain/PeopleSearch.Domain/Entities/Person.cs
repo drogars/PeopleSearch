@@ -24,7 +24,7 @@ namespace PeopleSearch.Domain.Entities
             
         }
 
-        public static Person CreatePerson(string firstName, string lastName, DateTime dateOfBirth, List<string> interests, byte[] picture,
+        public static Person CreatePerson(string firstName, string lastName, DateTime dateOfBirth, List<Interest> interests, byte[] picture,
             string addr1, string addr2, string city, string state, string postalCode)
         {
             //TODO: add picture
@@ -33,7 +33,7 @@ namespace PeopleSearch.Domain.Entities
             if (dateOfBirth.TimeOfDay != TimeSpan.Zero) throw new ArgumentException("Date of birth should not contain time information", nameof(dateOfBirth));
             if (interests == null)
             {
-                interests = new List<string>();
+                interests = new List<Interest>();
             }
             if (picture == null)
             {
@@ -50,7 +50,7 @@ namespace PeopleSearch.Domain.Entities
             person.City = city;
             person.State = state;
             person.PostalCode = postalCode;
-            person.Interests = interests.Select(i => Interest.Create(i)).ToList();
+            person.Interests = interests;
             person.Picture = picture;
 
             return person;

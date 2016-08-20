@@ -8,6 +8,8 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.WebApi;
 using PeopleSearch.Infrastructure;
+using PeopleSearch.Infrastructure.Services;
+using PeopleSearch.Server.Services;
 
 namespace PeopleSearch.Server
 {
@@ -20,6 +22,9 @@ namespace PeopleSearch.Server
             var builder = new ContainerBuilder();
 
             builder.RegisterType<PeopleContext>().AsSelf().InstancePerLifetimeScope();
+            builder.RegisterType<PersonRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<InterestRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<PersonCommandsService>().AsImplementedInterfaces().InstancePerLifetimeScope();
 
             // Get your HttpConfiguration.
             var config = GlobalConfiguration.Configuration;

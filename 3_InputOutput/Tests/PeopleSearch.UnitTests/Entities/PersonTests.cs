@@ -50,7 +50,7 @@ namespace PeopleSearch.UnitTests.Entities
             var firstName = "Darth";
             var lastName = "Vader";
             var dateOfBirth = new DateTime(2010, 5, 4);
-            List<string> interests = null;
+            List<Interest> interests = null;
 
             // Act
             var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interests, null, null, null, null, null, null);
@@ -67,7 +67,7 @@ namespace PeopleSearch.UnitTests.Entities
             var firstName = "Darth";
             var lastName = "Vader";
             var dateOfBirth = new DateTime(2010, 5, 4);
-            var interests = new List<string>();
+            var interests = new List<Interest>();
             byte[] picture = null;
 
             // Act
@@ -95,7 +95,7 @@ namespace PeopleSearch.UnitTests.Entities
             var picture = new byte[] {31, 2, 7};
 
             // Act
-            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interestValues, picture, addr1, addr2, city, state, postalCode);
+            var person = Person.CreatePerson(firstName, lastName, dateOfBirth, interests, picture, addr1, addr2, city, state, postalCode);
 
             // Assert
             person.FirstName.Should().Be(firstName);
