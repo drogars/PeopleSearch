@@ -4,11 +4,13 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
+using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.WebApi;
 using PeopleSearch.Infrastructure;
 using PeopleSearch.Infrastructure.Services;
+using PeopleSearch.Server.Server.Config;
 using PeopleSearch.Server.Services;
 
 namespace PeopleSearch.Server
@@ -18,6 +20,8 @@ namespace PeopleSearch.Server
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             var builder = new ContainerBuilder();
 
