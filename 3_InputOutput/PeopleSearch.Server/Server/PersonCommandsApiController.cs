@@ -29,20 +29,20 @@ namespace PeopleSearch.Server.Server
         public HttpResponseMessage SeedPeople()
         {
             var picture = GetByteArrayForImage(@"~/App_Data/images/DarthVader.jpg");
-            _personCommandsService.SavePerson("Darth", "Vader", new DateTime(1937, 5, 4), new List<string> {"Sith", "Luke Skywalker", "Force"}, picture, null, null, null, null, null);
+            _personCommandsService.SavePerson("Darth", "Vader", new DateTime(1937, 5, 4), new List<string> {"Sith", "Luke Skywalker", "Force"}, picture, "421 S Vader Way", "Suite 600", "Coruscant", "UT", "90000");
             
             picture = GetByteArrayForImage(@"~/App_Data/images/HanSolo.jpg");
-            _personCommandsService.SavePerson("Han", "Solo", new DateTime(1947, 5, 4), new List<string> { "Nerf herding", "Princess Leia", "Kessel Spiece Run" }, picture, null, null, null, null, null);
+            _personCommandsService.SavePerson("Han", "Solo", new DateTime(1947, 5, 4), new List<string> { "Nerf herding", "Princess Leia", "Kessel Spiece Run" }, picture, "12 Parsec Ave", null, "Milennium Falcon", "UT", "12001");
             
             picture = GetByteArrayForImage(@"~/App_Data/images/LukeSkywalker.jpg");
-            _personCommandsService.SavePerson("Luke", "Skywalker", new DateTime(1959, 5, 4), new List<string> { "Force", "Princess Leia", "Power converters" }, picture, null, null, null, null, null);
+            _personCommandsService.SavePerson("Luke", "Skywalker", new DateTime(1959, 5, 4), new List<string> { "Force", "Princess Leia", "Power converters" }, picture, "Moisture Farm", null, "Mos Eisley", "UT", "12345");
             
             picture = GetByteArrayForImage(@"~/App_Data/images/PrincessLeia.jpg");
-            _personCommandsService.SavePerson("Princess", "Leia", new DateTime(1959, 5, 4), new List<string> { "The rebellion", "Restoring the imperial senate", "Alderaan" }, picture, null, null, null, null, null);
+            _personCommandsService.SavePerson("Princess", "Leia", new DateTime(1959, 5, 4), new List<string> { "The rebellion", "Restoring the imperial senate", "Alderaan" }, picture, "1 Palace Way", "The Palace", "Capital City", "UT", "43125");
             
             _peopleContext.SaveChanges();
 
-            var result = new SeedPeopleResult();
+            var result = new SeedPeopleResult {NumberOfPeopleCreated = 4};
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
@@ -66,6 +66,6 @@ namespace PeopleSearch.Server.Server
 
     public class SeedPeopleResult
     {
-
+        public int NumberOfPeopleCreated { get; set; }
     }
 }

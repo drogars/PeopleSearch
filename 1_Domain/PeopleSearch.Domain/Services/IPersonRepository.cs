@@ -7,6 +7,8 @@ namespace PeopleSearch.Domain.Services
     {
         Person Get(int id);
 
+        List<Person> Search(string searchCriteria);
+
         Person Add(Person entity);
 
         void Delete(Person entity);

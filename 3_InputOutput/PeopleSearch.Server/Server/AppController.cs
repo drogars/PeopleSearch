@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
+using PeopleSearch.Domain.Services;
 
 namespace PeopleSearch.Server.Server
 {

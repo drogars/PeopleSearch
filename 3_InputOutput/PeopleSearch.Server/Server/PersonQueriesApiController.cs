@@ -1,42 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using PeopleSearch.Domain;
 using PeopleSearch.Domain.Entities;
-using PeopleSearch.Infrastructure;
+using PeopleSearch.Domain.Services;
+using PeopleSearch.Infrastructure.Dto;
 
 namespace PeopleSearch.Server.Server
 {
     public class PersonQueriesApiController : ApiController
     {
-        private readonly PeopleContext _peopleContext;
+        private readonly IPersonRepository _personRepository;
 
-        public PersonQueriesApiController(PeopleContext peopleContext)
+        public PersonQueriesApiController(IPersonRepository personRepository)
         {
-            _peopleContext = peopleContext;
+            _personRepository = personRepository;
         }
 
-        public HttpResponseMessage GetPerson(int personId)
+        [HttpGet]
+        public HttpResponseMessage SearchPeople(string searchCriteria)
         {
-            Person person = null;
+            if (string.IsNullOrEmpty(searchCriteria))
+            {
+                var message = "Please provide search criteria";
+                return Request.CreateResponse(HttpStatusCode.BadRequest, message);
+            }
 
+            List<PersonDto> results;
             try
             {
-                person = _peopleContext.People.Find(personId);
+                results = _personRepository
+                    .Search(searchCriteria)
+                    .Select(p => new PersonDto(p))
+                    .ToList();
             }
             catch (Exception ex)
             {
-                var errorMessage = string.Format("An error occurred while trying to get the person: {0}.", personId);
-
-                // TODO: log error message and exception
-
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, new QueryErrorResult {Message = errorMessage});
+                var message = string.Format("There was a problem performing the search: {0}", ex.ToString());
+                Debug.Write(message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, message);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, person);
+            return Request.CreateResponse(HttpStatusCode.OK, results);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage SearchPeopleSlow(string searchCriteria)
+        {
+            // Simulate a slow server response
+            System.Threading.Thread.Sleep(6000);
+
+            var response = SearchPeople(searchCriteria);
+
+            return response;
         }
     }
     

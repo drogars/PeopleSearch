@@ -1,3 +1,59 @@
 ﻿<div id="searchArea">
-    This is the search area.
+    <div class="container">
+        <form>
+            <div id="searchCriteria">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Search for People:</h3>
+                        <span>In this case, Star Wars people (i.e. Luke, Han, Leia, Darth Vader).</span>
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control input-lg" placeholder="" ng-model="vm.searchCriteria" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-md-1 processing"><span ng-if="vm.isProcessing">Processing...</span></div>
+                    <div class="col-md-5 buttons">
+                        <button type="submit" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel" ng-click="vm.search()">
+                            <span class="glyphicon glyphicon-cog"></span> Search
+                        </button>
+                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel" ng-click="vm.searchSlow()">
+                            <span class="glyphicon glyphicon-cog"></span> Search Slow
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div id="searchResults" class="search-results" ng-if="vm.searchResults.length > 0 && !vm.isProcessing">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Picture</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Interests</th>
+                    <th>Address</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="person in vm.searchResults">
+                    <td><img ng-src="data:image/JPEG;base64,{{person.Picture}}" /></td>
+                    <td>{{person.FirstName}}</td>
+                    <td>{{person.LastName}}</td>
+                    <td>{{person.Age}}</td>
+                    <td><span ng-repeat="interest in person.Interests">{{interest}}<br /></span></td>
+                    <td>
+                        {{person.Address1}}<br ng-if="person.Address1"/>
+                        {{person.Address2}}<br ng-if="person.Address2"/>
+                        {{person.City}}, {{person.State}} {{person.PostalCode}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

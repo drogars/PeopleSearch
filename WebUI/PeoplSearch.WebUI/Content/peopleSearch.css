@@ -1,0 +1,13 @@
+﻿.buttons {
+    padding-top: 20px;
+    text-align: right;
+}
+
+.search-results {
+    padding-top: 90px;
+}
+
+.processing {
+    color: blue;
+    padding: 25px 0 0 70px;
+}

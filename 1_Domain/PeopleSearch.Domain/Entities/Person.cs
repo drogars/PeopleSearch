@@ -7,27 +7,36 @@ namespace PeopleSearch.Domain.Entities
     public class Person
     {
         public int PersonId { get; protected set; }
+
         public string FirstName { get; protected set; }
+
         public string LastName { get; protected set; }
+
         public DateTime DateOfBirth { get; protected set; }
+
         public string Address1 { get; protected set; }
+
         public string Address2 { get; protected set; }
+
         public string City { get; protected set; }
+
         public string State { get; protected set; }
+
         public string PostalCode { get; protected set; }
-        public List<Interest> Interests { get; protected set; }
+
+        public ICollection<Interest> Interests { get; protected set; }
+
         public byte[] Picture { get; protected set; }
 
 
         protected Person()
         {
-            
+            Interests = new List<Interest>();
         }
 
         public static Person CreatePerson(string firstName, string lastName, DateTime dateOfBirth, List<Interest> interests, byte[] picture,
             string addr1, string addr2, string city, string state, string postalCode)
         {
-            //TODO: add picture
             if (string.IsNullOrEmpty(firstName)) throw new ArgumentException("First name is required.", nameof(firstName));
             if (string.IsNullOrEmpty(lastName)) throw new ArgumentException("Last name is required.", nameof(lastName));
             if (dateOfBirth.TimeOfDay != TimeSpan.Zero) throw new ArgumentException("Date of birth should not contain time information", nameof(dateOfBirth));

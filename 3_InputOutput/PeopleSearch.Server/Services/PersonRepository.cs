@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using PeopleSearch.Domain.Entities;
@@ -19,8 +20,7 @@ namespace PeopleSearch.Server.Services
         {
             _peopleContext = dbContext;
         }
-
-
+        
         public Person Get(int id)
         {
             return _peopleContext.People.Find(id);
@@ -29,6 +29,19 @@ namespace PeopleSearch.Server.Services
         public Person Add(Person entity)
         {
             return _peopleContext.People.Add(entity);
+        }
+
+        public List<Person> Search(string searchCriteria)
+        {
+            var searchTerms = searchCriteria.Split(' ');
+
+            var query = _peopleContext
+                .People
+                .Where(p => searchTerms.Any(s => p.FirstName.Contains(s)) || searchTerms.Any(s => p.LastName.Contains(s)))
+                .Include(p => p.Interests);
+            var people =  query.ToList();
+
+            return people;
         }
 
         public void Delete(Person entity)

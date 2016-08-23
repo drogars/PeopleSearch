@@ -1,0 +1,31 @@
+﻿{
+	"Framework": "jasmine",
+	"FrameworkVersion": "1",
+	"TestFileTimeout": 90000,
+	"CodeCoverageSuccessPercentage": 85,
+	"CodeCoverageExcludes": [
+		"*Specs*"
+	],
+	"CodeCoverageIncludes": [
+		//Most files should follow the conventions and automatically be included in code coverage
+		"*ClientApps*Vm*", //These include items under ClientApps(Ts)
+		"*ClientApps*Service*",
+		"*ClientApps*AreaState*",
+		"*ClientApps*Ctrl*",
+		"*ClientApps*Base*",
+		
+		//For files that don't follow convention, specifically include them here
+		
+		"*TestHelpers*mocks*" //We need to include mocks in the code coverage to ensure they get passed to blanket.js in the correct order
+	],
+	"Compile": {
+		"Extensions": [ ".ts" ],
+		"ExtensionsWithNoOutput": [ ".d.ts" ],
+		"Executable": "%msbuildexe%",
+		"Mode": "External"
+	},
+	"Tests": [
+		{ "Path": "ClientAppsTs/", "Include": "*Specs.ts", "Exclude": "*.js", "ExpandReferenceComments": "true" }
+	]
+
+}
