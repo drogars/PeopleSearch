@@ -73,3 +73,4 @@ var SearchAreaVm = (function () {
     };
     return SearchAreaVm;
 }());
+//# sourceMappingURL=SearchAreaVm.js.map

@@ -7,3 +7,4 @@ var app = angular.module('app', ['ngRoute'])
     $locationProvider.html5Mode(true);
 })
     .run(function ($rootScope) { angular.extend($rootScope); });
+//# sourceMappingURL=app.js.map

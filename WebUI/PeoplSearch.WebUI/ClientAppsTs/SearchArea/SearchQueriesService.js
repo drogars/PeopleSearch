@@ -31,3 +31,4 @@ var SearchQueriesService = (function () {
     return SearchQueriesService;
 }());
 app.factory('searchQueriesService', function ($http, $q) { return new SearchQueriesService($http, $q); });
+//# sourceMappingURL=SearchQueriesService.js.map

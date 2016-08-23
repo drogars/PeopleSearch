@@ -117,3 +117,4 @@ describe("VideModel: SearchAreaVm", function () {
         });
     });
 });
+//# sourceMappingURL=SearchAreaVmSpecs.js.map
