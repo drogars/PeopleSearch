@@ -13,13 +13,15 @@ class SearchQueriesService implements ISearchQueriesService {
         this._q = $q;
     }
 
-    searchPeople(searchCriteria: string): ng.IPromise<any> {
+    searchPeople(searchCriteria: string): ng.IPromise<PeopleSearch.Infrastructure.Dto.PersonDto[]> {
         var deferred = this._q.defer();
         var apiUrl = this._baseApiUrl + 'searchPeople?searchCriteria=' + encodeURIComponent(searchCriteria);
 
         this._http({ method: 'GET', url: apiUrl })
-            .success((data: any) => {
-                deferred.resolve(data);
+            .success((data: any[]) => {
+                data = data || [];
+                var response = data.map(p => PeopleSearch.Infrastructure.Dto.PersonDto.fromJSON(p));
+                deferred.resolve(response);
             })
             .error(() => {
                 deferred.reject('An error occurred while searching for people. Please try again.');
@@ -34,8 +36,10 @@ class SearchQueriesService implements ISearchQueriesService {
         var apiUrl = this._baseApiUrl + 'searchPeopleSlow?searchCriteria=' + encodeURIComponent(searchCriteria);
 
         this._http({ method: 'GET', url: apiUrl })
-            .success((data: any) => {
-                deferred.resolve(data);
+            .success((data: any[]) => {
+                data = data || [];
+                var response = data.map(p => PeopleSearch.Infrastructure.Dto.PersonDto.fromJSON(p));
+                deferred.resolve(response);
             })
             .error(() => {
                 deferred.reject('An error occurred while searching for people. Please try again.');

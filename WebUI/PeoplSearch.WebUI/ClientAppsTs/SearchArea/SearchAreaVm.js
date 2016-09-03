@@ -37,11 +37,11 @@ var SearchAreaVm = (function () {
     });
     SearchAreaVm.prototype.getAddress = function (person) {
         var address = "";
-        if (person.Address1) {
-            address += person.Address1;
+        if (person.address1) {
+            address += person.address1;
         }
-        if (person.Address2) {
-            address += person.Address2;
+        if (person.address2) {
+            address += person.address2;
         }
         return address;
     };

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using PeopleSearch.Domain.Entities;
 using PeopleSearch.Domain.Services;
 using PeopleSearch.Infrastructure.Dto;
@@ -21,6 +22,8 @@ namespace PeopleSearch.Server.Server
         }
 
         [HttpGet]
+        [ResponseType(typeof(PersonDto))]
+        [ResponseType(typeof(QueryErrorResult))]
         public HttpResponseMessage SearchPeople(string searchCriteria)
         {
             if (string.IsNullOrEmpty(searchCriteria))
@@ -41,13 +44,15 @@ namespace PeopleSearch.Server.Server
             {
                 var message = string.Format("There was a problem performing the search: {0}", ex.ToString());
                 Debug.Write(message);
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new QueryErrorResult {Message = message});
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, results);
         }
 
         [HttpGet]
+        [ResponseType(typeof(PersonDto))]
+        [ResponseType(typeof(QueryErrorResult))]
         public HttpResponseMessage SearchPeopleSlow(string searchCriteria)
         {
             // Simulate a slow server response

@@ -41,15 +41,15 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="person in vm.searchResults">
-                    <td><img ng-src="data:image/JPEG;base64,{{person.Picture}}" /></td>
-                    <td>{{person.FirstName}}</td>
-                    <td>{{person.LastName}}</td>
-                    <td>{{person.Age}}</td>
-                    <td><span ng-repeat="interest in person.Interests">{{interest}}<br /></span></td>
+                    <td><img ng-src="data:image/JPEG;base64,{{person.picture}}" /></td>
+                    <td>{{person.firstName}}</td>
+                    <td>{{person.lastName}}</td>
+                    <td>{{person.age}}</td>
+                    <td><span ng-repeat="interest in person.interests">{{interest}}<br /></span></td>
                     <td>
-                        {{person.Address1}}<br ng-if="person.Address1"/>
-                        {{person.Address2}}<br ng-if="person.Address2"/>
-                        {{person.City}}, {{person.State}} {{person.PostalCode}}
+                        {{person.address1}}<br ng-if="person.address1"/>
+                        {{person.address2}}<br ng-if="person.address2"/>
+                        {{person.city}}, {{person.state}} {{person.postalCode}}
                     </td>
                 </tr>
                 </tbody>

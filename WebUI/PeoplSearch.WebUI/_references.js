@@ -7,3 +7,4 @@
 /// <reference path="ClientAppsTs/SearchArea/SearchArea.js" />
 /// <reference path="ClientAppsTs/SearchArea/SearchAreaVm.js" />
 /// <reference path="ClientAppsTs/SearchArea/SearchQueriesService.js" />
+/// <reference path="ClientAppsTs/Api/PeopleSearch.Api.js" />

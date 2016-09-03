@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.WebApi;
+using Newtonsoft.Json.Serialization;
 using PeopleSearch.Infrastructure;
 using PeopleSearch.Infrastructure.Services;
 using PeopleSearch.Server.Server.Config;
@@ -32,6 +33,9 @@ namespace PeopleSearch.Server
 
             // Get your HttpConfiguration.
             var config = GlobalConfiguration.Configuration;
+
+            var contractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = contractResolver;
 
             // Register your Web API controllers.
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());

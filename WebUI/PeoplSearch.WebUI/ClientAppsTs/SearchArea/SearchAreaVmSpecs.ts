@@ -74,9 +74,20 @@ describe("VideModel: SearchAreaVm", () => {
             inject((searchAreaVm: SearchAreaVm, $rootScope) => {
                 // Arrange
                 searchAreaVm.searchCriteria = "Darth Vader";
-                // this is not the exact shape that comes back from the server, but it will
-                // suffice to verify that things are working correctly
-                var searchResults = [{ FirstName: "Darth", LastName: "Vader" }];
+                var searchResults: PeopleSearch.Infrastructure.Dto.IPersonDto[] = [{
+                        personId: 1,
+                        firstName: "Darth",
+                        lastName: "Vader",
+                        age: "400",
+                        address1: "address2",
+                        address2: "address2",
+                        city: "Smallville",
+                        state: "UT",
+                        postalCode: "",
+                        interests: ["bob"],
+                        picture: [4,3]
+                    }
+                ];
 
                 // Act
                 searchAreaVm.search();
@@ -85,8 +96,17 @@ describe("VideModel: SearchAreaVm", () => {
 
                 // Assert
                 expect(searchAreaVm.searchResults.length).toBe(1);
-                expect(searchAreaVm.searchResults[0].FirstName).toBe("Darth");
-                expect(searchAreaVm.searchResults[0].LastName).toBe("Vader");
+                expect(searchAreaVm.searchResults[0].personId).toBe(searchResults[0].personId);
+                expect(searchAreaVm.searchResults[0].firstName).toBe(searchResults[0].firstName);
+                expect(searchAreaVm.searchResults[0].lastName).toBe(searchResults[0].lastName);
+                expect(searchAreaVm.searchResults[0].age).toBe(searchResults[0].age);
+                expect(searchAreaVm.searchResults[0].address1).toBe(searchResults[0].address1);
+                expect(searchAreaVm.searchResults[0].address2).toBe(searchResults[0].address2);
+                expect(searchAreaVm.searchResults[0].city).toBe(searchResults[0].city);
+                expect(searchAreaVm.searchResults[0].state).toBe(searchResults[0].state);
+                expect(searchAreaVm.searchResults[0].postalCode).toBe(searchResults[0].postalCode);
+                expect(searchAreaVm.searchResults[0].interests).toBe(searchResults[0].interests);
+                expect(searchAreaVm.searchResults[0].picture).toBe(searchResults[0].picture);
             });
         });
     });
@@ -132,9 +152,20 @@ describe("VideModel: SearchAreaVm", () => {
             inject((searchAreaVm: SearchAreaVm, $rootScope) => {
                 // Arrange
                 searchAreaVm.searchCriteria = "Darth Vader";
-                // this is not the exact shape that comes back from the server, but it will
-                // suffice to verify that things are working correctly
-                var searchResults = [{ FirstName: "Darth", LastName: "Vader" }];
+                var searchResults: PeopleSearch.Infrastructure.Dto.IPersonDto[] = [{
+                        personId: 1,
+                        firstName: "Darth",
+                        lastName: "Vader",
+                        age: "400",
+                        address1: "address2",
+                        address2: "address2",
+                        city: "Smallville",
+                        state: "UT",
+                        postalCode: "",
+                        interests: ["bob"],
+                        picture: [4,3]
+                    }
+                ];
 
                 // Act
                 searchAreaVm.searchSlow();
@@ -143,8 +174,17 @@ describe("VideModel: SearchAreaVm", () => {
 
                 // Assert
                 expect(searchAreaVm.searchResults.length).toBe(1);
-                expect(searchAreaVm.searchResults[0].FirstName).toBe("Darth");
-                expect(searchAreaVm.searchResults[0].LastName).toBe("Vader");
+                expect(searchAreaVm.searchResults[0].personId).toBe(searchResults[0].personId);
+                expect(searchAreaVm.searchResults[0].firstName).toBe(searchResults[0].firstName);
+                expect(searchAreaVm.searchResults[0].lastName).toBe(searchResults[0].lastName);
+                expect(searchAreaVm.searchResults[0].age).toBe(searchResults[0].age);
+                expect(searchAreaVm.searchResults[0].address1).toBe(searchResults[0].address1);
+                expect(searchAreaVm.searchResults[0].address2).toBe(searchResults[0].address2);
+                expect(searchAreaVm.searchResults[0].city).toBe(searchResults[0].city);
+                expect(searchAreaVm.searchResults[0].state).toBe(searchResults[0].state);
+                expect(searchAreaVm.searchResults[0].postalCode).toBe(searchResults[0].postalCode);
+                expect(searchAreaVm.searchResults[0].interests).toBe(searchResults[0].interests);
+                expect(searchAreaVm.searchResults[0].picture).toBe(searchResults[0].picture);
             });
         });
     });
