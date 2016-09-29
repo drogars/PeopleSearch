@@ -85,7 +85,7 @@ describe("VideModel: SearchAreaVm", () => {
                         state: "UT",
                         postalCode: "",
                         interests: ["bob"],
-                        picture: [4,3]
+                        picture: "VGhpcyBpcyBhIHRlc3Qu"
                     }
                 ];
 
@@ -163,7 +163,7 @@ describe("VideModel: SearchAreaVm", () => {
                         state: "UT",
                         postalCode: "",
                         interests: ["bob"],
-                        picture: [4,3]
+                        picture: "VGhpcyBpcyBhIHRlc3Qu"
                     }
                 ];
 

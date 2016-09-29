@@ -12,7 +12,7 @@ module PeopleSearch.Infrastructure.Dto {
 		state: string;
 		postalCode: string;
 		interests: string[];
-		picture: number[];
+		picture: string;
 	}
 
 	export class PersonDto  implements IPersonDto {
@@ -26,7 +26,7 @@ module PeopleSearch.Infrastructure.Dto {
 		state: string;
 		postalCode: string;
 		interests: string[];
-		picture: number[];
+		picture: string;
 		public static fromJSON(json: any) : PersonDto {
 			if (json === undefined)
 				return undefined;
