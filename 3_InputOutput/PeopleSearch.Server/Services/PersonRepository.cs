@@ -35,11 +35,13 @@ namespace PeopleSearch.Server.Services
         {
             var searchTerms = searchCriteria.Split(' ');
 
+            this._peopleContext.SaveChanges();
+
             var query = _peopleContext
                 .People
                 .Where(p => searchTerms.Any(s => p.FirstName.Contains(s)) || searchTerms.Any(s => p.LastName.Contains(s)))
                 .Include(p => p.Interests);
-            var people =  query.ToList();
+            var people = query.ToList();
 
             return people;
         }

@@ -20,11 +20,12 @@ var PeopleSearch;
                         age: json.age,
                         address1: json.address1,
                         address2: json.address2,
+                        address3: json.address3,
                         city: json.city,
                         state: json.state,
                         postalCode: json.postalCode,
                         interests: json.interests === null ? null : json.interests.map(function (o) { return o; }),
-                        picture: json.picture
+                        picture: json.picture === null ? null : json.picture.map(function (o) { return o; })
                     };
                 };
                 return PersonDto;
@@ -33,7 +34,6 @@ var PeopleSearch;
         })(Dto = Infrastructure.Dto || (Infrastructure.Dto = {}));
     })(Infrastructure = PeopleSearch.Infrastructure || (PeopleSearch.Infrastructure = {}));
 })(PeopleSearch || (PeopleSearch = {}));
-var PeopleSearch;
 (function (PeopleSearch) {
     var Server;
     (function (Server_1) {

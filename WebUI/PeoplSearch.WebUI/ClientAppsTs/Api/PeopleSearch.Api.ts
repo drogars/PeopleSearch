@@ -8,11 +8,12 @@ module PeopleSearch.Infrastructure.Dto {
 		age: string;
 		address1: string;
 		address2: string;
+		address3: string;
 		city: string;
 		state: string;
 		postalCode: string;
 		interests: string[];
-		picture: string;
+		picture: number[];
 	}
 
 	export class PersonDto  implements IPersonDto {
@@ -22,11 +23,12 @@ module PeopleSearch.Infrastructure.Dto {
 		age: string;
 		address1: string;
 		address2: string;
+		address3: string;
 		city: string;
 		state: string;
 		postalCode: string;
 		interests: string[];
-		picture: string;
+		picture: number[];
 		public static fromJSON(json: any) : PersonDto {
 			if (json === undefined)
 				return undefined;
@@ -40,11 +42,12 @@ module PeopleSearch.Infrastructure.Dto {
 				age: json.age,
 				address1: json.address1,
 				address2: json.address2,
+				address3: json.address3,
 				city: json.city,
 				state: json.state,
 				postalCode: json.postalCode,
 				interests: json.interests === null ? null : json.interests.map(o => o),
-				picture: json.picture
+				picture: json.picture === null ? null : json.picture.map(o => o)
 			};
 		}
 	}
